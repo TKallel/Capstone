@@ -184,9 +184,32 @@ Worth being honest here: the neural network ensemble is doing most of the work. 
 
 ```
 .
-├── README.md
-├── data/                 # Observations for each function
-├── scripts/              # One optimization script per function
+Capstone/
+│
+├── README.md              This file
+├── LICENSE                MIT licence
+├── DATASHEET.md           How the data was collected, and its limits
+├── MODEL_CARD.md          How the approach works, and where it fails
+├── REFERENCES.md          Literature the methods are based on
+├── requirements.txt       Python packages needed
+│
+├── data/                  Observations for each function
+│   ├── function_1.csv      15 rows, 2 inputs
+│   ├── function_2.csv      15 rows, 2 inputs
+│   ├── function_3.csv      20 rows, 3 inputs
+│   ├── function_4.csv      35 rows, 4 inputs
+│   ├── function_5.csv      25 rows, 4 inputs
+│   ├── function_6.csv      25 rows, 5 inputs
+│   ├── function_7.csv      35 rows, 6 inputs
+│   └── function_8.csv      45 rows, 8 inputs
+│
+├── notebooks/             Method and results, one notebook per function
+│   ├── function_1.ipynb
+│   ├── ...
+│   └── function_8.ipynb
+│
+└── results/
+    └── RESULTS.md          Outcomes across all eight functions
 
 ```
 
