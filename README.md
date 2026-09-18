@@ -147,7 +147,7 @@ With 43 data points spread across 8 dimensions, the space is almost entirely emp
 
 The next point is then chosen in two stages: first keep only candidates the SVM considers promising, then among those pick the one maximizing `ensemble mean + 0.2 × ensemble disagreement`.
 
-Worth being honest here: the neural network ensemble is doing most of the work. The SVM filter helps, but it is a useful addition rather than the main reason this approach outperforms the GP at this dimensionality.
+The neural network ensemble is doing most of the work. The SVM filter helps, but it is a useful addition rather than the main reason this approach outperforms the GP at this dimensionality.
 
 ---
 
