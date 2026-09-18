@@ -113,7 +113,7 @@ The description hinted the function had multiple peaks and you could get stuck i
 
 ### Function 3 (3D) — Minimizing by maximizing
 
-The goal was to reduce drug side effects. Since the output was already expressed as a negative value, maximizing it directly is the same as minimizing harm. No extra work needed — but worth confirming rather than assuming.
+The goal was to reduce drug side effects. Since the output was already expressed as a negative value, maximizing it directly is the same as minimizing harm. No extra work needed.
 
 ### Functions 4 and 5 (4D) — Taming extreme ranges
 
