@@ -74,16 +74,14 @@ guessing; above 1 means it does worse.
 **Every function with a ratio near or above 1 failed. Every function below 0.6
 improved. No exceptions.**
 
-Read as absolute error, the failures are stark. Function 3's model is wrong by
-0.117 on a target whose whole range is 0.36 — and predicting the mean would
-have been *more* accurate. Function 4's is wrong by 0.177 on a range of 2.5.
+Function 3's model is wrong by 0.117 on a target whose whole range is 0.36 — and predicting the mean would
+have been *more* accurate. Function 4's is wrong by 0.177.
 
 The three failing models belong to the three smallest data sets — 15, 15 and 20
 points. They could not tell one region of the space from another, so the search
 had nothing to follow and drifted to the corners.
 
-Function 8 has no score here because it uses a different kind of model. Its
-equivalent check showed the same problem: the model was barely less certain
+Function 8 has no score here because it uses a different kind of model. The model was barely less certain
 about places it had never seen, so three of its five rounds re-measured
 almost the same point.
 
@@ -105,9 +103,7 @@ The reason is in how the candidate list is built. Each script creates its pool
 of candidate points with `np.linspace(0, 1, n_grid)` along every axis, so 0 and
 1 are always on the menu, and exact corners are always available. The model
 then picks the best candidate from whatever pool it is given — it cannot
-suggest a point that is not in the list. When the model is uncertain, the
-candidates furthest from any measurement win, and on a grid those are always at
-the edges.
+suggest a point that is not in the list. 
 
 **Improvement clustered.** The two functions that improved most show
 consecutive queries in one tight region, each refining the last. The four that
@@ -146,7 +142,7 @@ The lesson is not that one value is better than another. It is that the right
 balance changes as the search goes on, and a value chosen at the start will be
 wrong for most of the run.
 
-Being wrong in each direction looked different. **Function 4 explored too hard**
+**Function 4 explored too hard**
 — ξ = 0.10 sent four of five queries to the edges of the space, even though it
 had the best model of the eight and plenty of good information to use.
 **Function 8 exploited too hard** — β = 0.2 meant rounds 1, 3 and 4 measured
@@ -155,8 +151,7 @@ effectively the same point, then round 5 leapt to a corner.
 **Functions 1 and 3 only looked like they were exploring.** Their models could
 not tell one region from another, so every unknown point seemed equally
 uncertain and the search just picked whichever candidate was furthest from the
-data — always a corner. Exploration only means something when the model can say
-which unknowns are worth resolving.
+data — always a corner. 
 
 ## What I would do differently
 
@@ -172,10 +167,6 @@ Tie the balance to the model rather than to the problem description:
 - **If several rounds pass with no improvement**, loosen again rather than
   continuing to exploit a region that has stopped yielding.
 
----
-
-## What I would do differently
-
 **1. Check the model before acting on the point it suggests.**
 The validation above takes a few lines to run. On Functions 1, 2 and 3 it would
 have shown, after the first round, that the model's predictions were no better
@@ -187,16 +178,12 @@ Functions 1 and 2 had only 10 starting points across a 2D space, and Function 3
 had 15 across 3D. A model fitted to that little data cannot rank one region
 above another, so following it is close to picking at random. Choosing points
 that sit far from everything already measured at least maps the space, and
-gives the next model something to learn from. This is the standard opening
-phase in Bayesian optimization, and it was skipped here.
-
+gives the next model something to learn from.
 **3. Build the candidate list differently.**
 The model does choose the query — but only from the list of candidates the code
 hands it. That list comes from `np.linspace(0, 1, n_grid)` on every axis, which
 guarantees the exact corners of the space are always available. Replacing the
-grid with a spread-out random sequence such as Sobol removes the corner bias and
-also scales better: 12 steps per axis is three million candidates in 6D and is
-impossible in 8D, where the grid had to drop to six steps per axis.
+grid is required.
 
 **4. On Function 8, stop re-measuring the same point.**
 Rounds 3 and 4 landed 0.023 and 0.017 away from an earlier query and returned
@@ -209,5 +196,3 @@ sense of where it was uncertain.
 
 ---
 
-Full detail per function is in the notebooks. See `MODEL_CARD.md` for the
-method and its limitations, and `DATASHEET.md` for the data.
