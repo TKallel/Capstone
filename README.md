@@ -63,13 +63,13 @@ The whole project is about managing this trade-off intelligently, and shifting t
 
 ## How the approach evolved
 
-### Week 1 — Eyeballing it
+### Week 1 — High Level Assessment
 
 I started by plotting the data and picking points that looked promising by hand.
 
 This worked for getting a feel for the problem, but it fell apart quickly. You cannot visually inspect an 8-dimensional space, and "this looks good" is not a repeatable method. There was also no way to measure how confident I should be about any region.
 
-### Week 2 onwards — Bayesian optimization
+### Week 2 onwards — Bayesian Optimization
 
 I switched to a proper framework with two pieces:
 
