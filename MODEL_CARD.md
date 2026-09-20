@@ -24,11 +24,11 @@ Measured by best value found, since no ground truth exists. These figures cover 
 
 Four of eight functions improved — Function 5 by 153%, Function 7 by 61%, Function 6 by 55%, Function 4 by 6%. Functions 1, 2, 3 and 8 did not improve at all.
 
-Each surrogate was then checked by leave-one-out cross-validation, reporting both RMSE and R². RMSE gives the average prediction error in the units of each target, which is the more interpretable measure; R² expresses the same error as a proportion of the variance. Because each function sits on a different scale, the two are compared here through the ratio of the model's RMSE to the RMSE of simply predicting the mean.
+Each surrogate was then checked by leave-one-out cross-validation, reporting both RMSE and R². RMSE gives the average prediction error in the units of each target, which is the more interpretable measure; R² expresses the same error as a proportion of the variance. 
 
-The result is unambiguous. Functions 1, 2 and 3 have ratios of 1.00, 0.94 and 1.04 — their models are no better than guessing the average, and Function 3's is worse. Functions 4, 5, 6 and 7 have ratios of 0.31, 0.59, 0.57 and 0.48, corresponding to R² values of 0.904, 0.651, 0.679 and 0.774. Every function with a poor surrogate failed to improve and every function with a good one improved, with no exceptions. The stalled functions were not exploring badly — they were following models that could not tell one region from another.
+The result is unambiguous. Functions 1, 2 and 3 have ratios of 1.00, 0.94 and 1.04 — their models are no better than guessing the average, and Function 3's is worse. Functions 4, 5, 6 and 7 have ratios of 0.31, 0.59, 0.57 and 0.48, corresponding to R² values of 0.904, 0.651, 0.679 and 0.774. Every function with a poor surrogate failed to improve and every function with a good one improved, with no exceptions. 
 
-A caveat on the metric. R² is unitless and relative, so a high value does not by itself make a model appropriate; RMSE is preferred for comparing across model types because it stays in the units of the data. The values here are measured out of sample, so they cannot be inflated by adding model complexity — an over-fitted model is penalised rather than rewarded — but neither metric says anything about whether the model's *uncertainty* estimates are trustworthy, which is a separate question and the one that matters most for choosing where to search next.
+A caveat on the metric. R² is unitless and relative, so a high value does not by itself make a model appropriate; RMSE is preferred for comparing across model types because it stays in the units of the data. 
 
 ### Assumptions and Limitations
 
