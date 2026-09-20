@@ -191,7 +191,6 @@ Capstone/
 ├── DATASHEET.md           How the data was collected, and its limits
 ├── MODEL_CARD.md          How the approach works, and where it fails
 ├── REFERENCES.md          Literature the methods are based on
-├── requirements.txt       Python packages needed
 │
 ├── data/                  Observations for each function
 │   ├── function_1.csv      15 rows, 2 inputs
@@ -208,8 +207,7 @@ Capstone/
 │   ├── ...
 │   └── function_8.ipynb
 │
-└── results/
-    └── RESULTS.md          Outcomes across all eight functions
+└── RESULTS.md             Outcomes across all eight functions
 
 ```
 
